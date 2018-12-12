@@ -9,20 +9,37 @@
 #3.2) Сделать так, что Петрович заболел: добавить условие по вводу с клавиатуры. Совет: используйте цикл while.
 
 
-time = 10
-dis = input('Петрович заболел? Да/Нет: ')
-if dis == 'Да':
-    while time < 18 and time > 9:     
+def check_input_value(val):
+    while ((val != 'Да') and (val != 'Нет')):
+        print('Вы ввели неверное значение')
+        val = input('Введите "Да" или "Нет": ')
+    return val   
+    
+
+
+
+quant_tree = 0
+quant_hour = 0
+while True:
+    val = input('Петрович заболел? Да/Нет: ')
+    check_input_value(val)
+    print(val)
+    for i in range(2):   
         print('Я выкапываю яму')
-        print('Ожидаем')
+        if val == 'Да':
+            print('Ожидаем')
+        else:
+            print('Петрович кладет туда саженец')    
         print('Серега закапывает')
         print('Перекур')
-        time = int(input('Введите текущее время: '))
-elif dis == 'Нет':
-    while time < 18 and time > 9:  
-        print('Я выкапываю яму')
-        print('Петрович кладет туда саженец')
-        print('Серега закапывает')
-        print('Перекур')
-        time = int(input('Введите текущее время: '))
+        quant_tree+=1
+    quant_hour += 8
+    print('Всего отработали '+ str(quant_hour)+ ' часа/ов и посадили ' +str(quant_tree) +' саженца/ев')
+    print('Будет ли завтра продолжена работа?')
+    to_be_continued = input('Да/Нет: ')
+    check_input_value(to_be_continued)    
+    if to_be_continued == 'Нет':
+        print('Приходите к нам еще =)')        
+        break
+	
 
