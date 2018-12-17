@@ -13,33 +13,29 @@ def check_input_value(val):
     while ((val != 'Да') and (val != 'Нет')):
         print('Вы ввели неверное значение')
         val = input('Введите "Да" или "Нет": ')
-    return val   
-    
+    return val 
 
-
-
+dig_a_hole = 1
+plant_a_tree = 2
+bury_a_hole = 0.5
+wait = 0.5
 quant_tree = 0
-quant_hour = 0
-while True:
-    val = input('Петрович заболел? Да/Нет: ')
-    check_input_value(val)
-    print(val)
-    for i in range(2):   
+
+while True:    
+    disease = input('Петрович заболел? Да/Нет: ')
+    check_input_value(disease)    
+    time = 0
+    while time <= 8:     
         print('Я выкапываю яму')
-        if val == 'Да':
+        if disease == 'Да':
             print('Ожидаем')
         else:
-            print('Петрович кладет туда саженец')    
+            print('Петрович кладет туда саженец')
+            quant_tree +=1    
         print('Серега закапывает')
         print('Перекур')
-        quant_tree+=1
-    quant_hour += 8
-    print('Всего отработали '+ str(quant_hour)+ ' часа/ов и посадили ' +str(quant_tree) +' саженца/ев')
-    print('Будет ли завтра продолжена работа?')
-    to_be_continued = input('Да/Нет: ')
-    check_input_value(to_be_continued)    
-    if to_be_continued == 'Нет':
-        print('Приходите к нам еще =)')        
-        break
-	
-
+        time = time + dig_a_hole + plant_a_tree + bury_a_hole + wait
+    if disease == 'Нет':
+        quant_tree-=1    
+    print('Количество посоженых деревьев: '+ str(quant_tree))	
+	    
