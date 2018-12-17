@@ -20,6 +20,7 @@ plant_a_tree = 2
 bury_a_hole = 0.5
 wait = 0.5
 quant_tree = 0
+total_time = 0
 
 while True:    
     disease = input('Петрович заболел? Да/Нет: ')
@@ -35,7 +36,9 @@ while True:
         print('Серега закапывает')
         print('Перекур')
         time = time + dig_a_hole + plant_a_tree + bury_a_hole + wait
+    total_time+=8
     if disease == 'Нет':
         quant_tree-=1    
-    print('Количество посоженых деревьев: '+ str(quant_tree))	
+    print('Количество посоженых деревьев: '+ str(quant_tree))
+    print('Общее время работы: '+ str(total_time))		
 	    
